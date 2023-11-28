@@ -70,12 +70,57 @@ function displayQuestion() {
 
 
 function startTimer() {
-    timerInterval = setInterval(() => {
+   const timerinterval = setInterval(() => {
         timeLeft--;
+        console.log('Time left: ${timeleft} seconds');
         if (timeLeft <= 0) {
             endQuiz();
+            console.log('Time is up!');
         }
     }, 1000);
 }
 
 
+function checkAnswer(event) {
+    if (event.target.tagName === 'BUTTON') {
+        const selectedAnswer = event.target.textContent;
+        const correctAnswer = questions[currentQuestionIndex].correctAnswer;
+
+        if (selectedAnswer === correctAnswer) {
+            score++;
+            resultText.textContent = 'Correct!';
+        } else {
+            timeLeft -= 10;
+            resultText.textContent = 'Incorrect!';
+        }
+
+        currentQuestionIndex++;
+
+        if (currentQuestionIndex < questions.length) {
+            displayQuestion();
+        } else {
+            endQuiz();
+        }
+    }
+}
+
+
+function endQuiz() {
+    clearInterval(timerInterval);
+    questionContainer.classList.add('hide');
+    resultContainer.classList.remove('hide');
+    resultText.textContent = `Quiz over! Your score is ${score}.`;
+    scoreContainer.classList.remove('hide');
+}
+
+
+function saveScore() {
+    const initials = initialsInput.value.trim().toUpperCase();
+
+    if (initials !== '') {
+        // Save the score (you can implement this part as needed)
+        alert(`Score saved for ${initials} - ${score}`);
+    } else {
+        alert('Please enter your initials.');
+    }
+}
