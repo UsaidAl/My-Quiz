@@ -48,3 +48,34 @@ optionsContainer.addEventListener('click', checkAnswer);
 saveScoreBtn.addEventListener('click', saveScore);
 
 
+function startQuiz() {
+    startBtn.classList.add('hide');
+    questionContainer.classList.remove('hide');
+    displayQuestion();
+    startTimer();
+}
+
+
+function displayQuestion() {
+    const currentQuestion = questions[currentQuestionIndex];
+    questionText.textContent = currentQuestion.question;
+    optionsContainer.innerHTML = '';
+
+    currentQuestion.options.forEach(option => {
+        const button = document.createElement('button');
+        button.textContent = option;
+        optionsContainer.appendChild(button);
+    });
+}
+
+
+function startTimer() {
+    timerInterval = setInterval(() => {
+        timeLeft--;
+        if (timeLeft <= 0) {
+            endQuiz();
+        }
+    }, 1000);
+}
+
+
