@@ -29,10 +29,10 @@ const questions = [
 
 let currentQuestionIndex = 0;
 let score = 0;
-let timeLeft = 60;
+let timeLeft = 30;
 let timerInterval;
 
-
+const timeLeftElement = document.getElementById('time-left')
 const startBtn = document.getElementById('start-btn');
 const questionContainer = document.getElementById('question-container');
 const questionText = document.getElementById('question-text');
@@ -79,7 +79,7 @@ function startTimer() {
         }
     }, 1000);
 }
-
+startTimer();
 
 function checkAnswer(event) {
     if (event.target.tagName === 'BUTTON') {
@@ -118,7 +118,7 @@ function saveScore() {
     const initials = initialsInput.value.trim().toUpperCase();
 
     if (initials !== '') {
-        // Save the score (you can implement this part as needed)
+        
         alert(`Score saved for ${initials} - ${score}`);
     } else {
         alert('Please enter your initials.');

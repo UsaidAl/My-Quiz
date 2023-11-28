@@ -21,3 +21,12 @@ body {
 #options-container button {
     margin-bottom: 10px;
 }
+
+#timer-container {
+    margin-top: 10px;
+}
+
+#timer {
+    font-size: 18px;
+    font-weight: bold;
+}
