@@ -32,3 +32,19 @@ let score = 0;
 let timeLeft = 60;
 let timerInterval;
 
+
+const startBtn = document.getElementById('start-btn');
+const questionContainer = document.getElementById('question-container');
+const questionText = document.getElementById('question-text');
+const optionsContainer = document.getElementById('options-container');
+const resultContainer = document.getElementById('result-container');
+const resultText = document.getElementById('result-text');
+const scoreContainer = document.getElementById('score-container');
+const initialsInput = document.getElementById('initials');
+const saveScoreBtn = document.getElementById('save-score-btn');
+
+startBtn.addEventListener('click', startQuiz);
+optionsContainer.addEventListener('click', checkAnswer);
+saveScoreBtn.addEventListener('click', saveScore);
+
+
